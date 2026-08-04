@@ -15,27 +15,38 @@ Juego estilo Pac-Man desarrollado con Java Swing. El jugador recorre el laberint
 - Configuracion lista para Visual Studio Code.
 
 
-## Como ejecutar en Visual Studio Code
+## Como ejecutar
 
-1. Abre en VS Code la carpeta completa `Pman`.
-2. Espera a que la extension de Java termine de cargar.
-3. Selecciona **Ejecutar Pman** si VS Code pregunta que configuracion usar.
-4. Escribe el nombre del jugador.
+> **Importante:** el juego se ejecuta siempre con el archivo `run.bat`. No intentes
+> compilar ni ejecutar las clases manualmente desde VS Code ni desde la consola,
+> porque el proyecto no queda listo hasta que `run.bat` compila y arranca el juego.
 
-
-
-## Como ejecutar desde Windows
+### Opcion 1: Doble clic
 
 Haz doble clic en:
 
-
+```
 run.bat
+```
 
+### Opcion 2: Desde PowerShell
 
-Tambien puedes usar la terminal de PowerShell:
-
-
+```powershell
 .\run.bat
+```
+
+### Opcion 3: Desde Visual Studio Code
+
+1. Abre en VS Code la carpeta completa `Pman`.
+2. Espera a que la extension de Java termine de cargar.
+3. Abre una terminal integrada (`` Ctrl + ` ``).
+4. Ejecuta:
+
+```powershell
+.\run.bat
+```
+
+5. Escribe el nombre del jugador.
 
 
 ## Controles
