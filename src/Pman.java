@@ -44,6 +44,19 @@ public class Pman extends JPanel {
   private Image pmanLeftImage;
   private Image pmanRightImage;
 
+  private Image loadImage(String fileName) {
+    java.net.URL url = getClass().getResource("/img/" + fileName);
+    if (url == null) {
+      java.io.File file = new java.io.File("img/" + fileName);
+      if (file.exists()) {
+        return new ImageIcon(file.getAbsolutePath()).getImage();
+      }
+      System.err.println("No se pudo cargar la imagen: " + fileName);
+      return null;
+    }
+    return new ImageIcon(url).getImage();
+  }
+
   //X = pardes, O = espacios en blanco, P = pac man, ' ' = food
   //Ghosts: b = blue, o = orange, p = pink, r = red
     private String[] tileMap = {
@@ -73,22 +86,28 @@ public class Pman extends JPanel {
     HashSet<Bloque> walls;
     HashSet<Bloque> foods;
     HashSet<Bloque> ghosts;
+    Bloque pman;
 
   Pman() {
     setPreferredSize(new Dimension(boardWidth, boardHeight));
     setBackground(Color.BLACK);
 
     // Carga de imagenes 
-    wallImage = new ImageIcon(getClass().getResource("img/wall.png")).getImage();
-    blueGhostImage = new ImageIcon(getClass().getResource("img/blueGhost.png")).getImage();
-    orangeGhostImage = new ImageIcon(getClass().getResource("img/orangeGhost.png")).getImage();
-    pinkGhostImage = new ImageIcon(getClass().getResource("img/pinkGhost.png")).getImage();
-    redGhostImage = new ImageIcon(getClass().getResource("img/redGhost.png")).getImage();
+    wallImage = loadImage("wall.png");
+    blueGhostImage = loadImage("blueGhost.png");
+    orangeGhostImage = loadImage("orangeGhost.png");
+    pinkGhostImage = loadImage("pinkGhost.png");
+    redGhostImage = loadImage("redGhost.png");
 
-    pmanUpImage = new ImageIcon(getClass().getResource("img/pacmanUp.png")).getImage();
-    pmanDownImage = new ImageIcon(getClass().getResource("img/pacmanDown.png")).getImage();
-    pmanLeftImage = new ImageIcon(getClass().getResource("img/pacmanLeft.png")).getImage();
-    pmanRightImage = new ImageIcon(getClass().getResource("img/pacmanRigth.png")).getImage();
+    pmanUpImage = loadImage("pacmanUp.png");
+    pmanDownImage = loadImage("pacmanDown.png");
+    pmanLeftImage = loadImage("pacmanLeft.png");
+    pmanRightImage = loadImage("pacmanRight.png");
+
+    loadMap();
+    System.out.println(walls.size());
+    System.out.println(foods.size());
+    System.out.println(ghosts.size());
   }
 
   public void loadMap(){
@@ -104,22 +123,30 @@ public class Pman extends JPanel {
         int x = c*tileSize;
         int y = r*tileSize;
 
-        if(tileMapChar == 'x') {
+        if(tileMapChar == 'X') {
           Bloque wall = new Bloque(wallImage, x, y, tileSize, tileSize);
           walls.add(wall);
         }
         else if (tileMapChar == 'b') {
           Bloque ghost = new Bloque(blueGhostImage, x, y, tileSize, tileSize);
+          ghosts.add(ghost);
         }
         else if (tileMapChar == 'o') {
           Bloque ghost = new Bloque(orangeGhostImage, x, y, tileSize, tileSize);
+          ghosts.add(ghost);
         }else if (tileMapChar == 'p') {
           Bloque ghost = new Bloque(pinkGhostImage, x, y, tileSize, tileSize);
+          ghosts.add(ghost);
         }else if (tileMapChar == 'r') {
           Bloque ghost = new Bloque(redGhostImage, x, y, tileSize, tileSize);
+          ghosts.add(ghost);
         }
         else if (tileMapChar == 'P') {
-
+          pman = new Bloque(pmanRightImage, x, y, tileSize, tileSize); 
+        }
+        else if (tileMapChar == ' ') {
+          Bloque food = new Bloque(null, x + 14, y + 14, 4, 4);
+          foods.add(food);
         }
       }
     }
