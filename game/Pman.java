@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.HashSet;
 import java.util.Random;
 import javax.swing.*;
@@ -133,16 +134,16 @@ public class Pman extends JPanel implements ActionListener, KeyListener {
     setFocusable(true);
 
     // Carga de imagenes 
-    wallImage = new ImageIcon(getClass().getResource("./wall.png")).getImage();
-    blueGhostImage = new ImageIcon(getClass().getResource("./blueGhost.png")).getImage();
-    orangeGhostImage = new ImageIcon(getClass().getResource("./orangeGhost.png")).getImage();
-    pinkGhostImage = new ImageIcon(getClass().getResource("./pinkGhost.png")).getImage();
-    redGhostImage = new ImageIcon(getClass().getResource("./redGhost.png")).getImage();
+    wallImage = loadImage("wall.png");
+    blueGhostImage = loadImage("blueGhost.png");
+    orangeGhostImage = loadImage("orangeGhost.png");
+    pinkGhostImage = loadImage("pinkGhost.png");
+    redGhostImage = loadImage("redGhost.png");
 
-    pmanUpImage = new ImageIcon(getClass().getResource("./pacmanUp.png")).getImage();
-    pmanDownImage = new ImageIcon(getClass().getResource("./pacmanDown.png")).getImage();
-    pmanLeftImage = new ImageIcon(getClass().getResource("./pacmanLeft.png")).getImage();
-    pmanRightImage = new ImageIcon(getClass().getResource("./pacmanRight.png")).getImage();
+    pmanUpImage = loadImage("pacmanUp.png");
+    pmanDownImage = loadImage("pacmanDown.png");
+    pmanLeftImage = loadImage("pacmanLeft.png");
+    pmanRightImage = loadImage("pacmanRight.png");
 
 
     loadMap();
@@ -354,6 +355,14 @@ public class Pman extends JPanel implements ActionListener, KeyListener {
             pman.image = pmanRightImage;
         }
     }
+
+  private Image loadImage(String name) {
+    File file = new File("imagenes/" + name);
+    if (file.exists()) {
+      return new ImageIcon(file.getAbsolutePath()).getImage();
+    }
+    return new ImageIcon(getClass().getResource("../imagenes/" + name)).getImage();
+  }
 
   public static void main(String[] args) {
     JFrame frame = new JFrame("Pac Man");

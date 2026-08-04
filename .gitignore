@@ -1,0 +1,7 @@
+# Compilados
+*.class
+out/
+
+# Puntuaciones locales
+data/scores.dat
+data/scores.tmp

@@ -38,13 +38,6 @@ Tambien puedes usar la terminal de PowerShell:
 .\run.bat
 
 
-## Como ejecutar desde Linux o macOS
-
-
-chmod +x run.sh
-./run.sh
-
-
 ## Controles
 
 | Tecla | Accion |
@@ -85,7 +78,7 @@ El archivo `scores.dat` esta ignorado por Git para evitar subir puntuaciones loc
 
 ## Como cambiar el mapa
 
-El mapa esta en `src/com/pacman/game/Pman.java`, dentro del arreglo `tileMap`.
+El mapa esta en `game/Pman.java`, dentro del arreglo `tileMap`.
 
 Simbolos disponibles:
 
@@ -164,30 +157,6 @@ Aumenta los puntos cuando el jugador consume varios alimentos o fantasmas sin pe
 - Rosado: intenta adelantarse a la direccion del jugador.
 - Azul: combina la posicion del jugador y del fantasma rojo.
 - Naranja: persigue al jugador solo cuando esta lejos.
-
-## Commits recomendados
-
-Despues de copiar todos los archivos y comprobar que el juego funciona, abre la terminal en la carpeta del proyecto y ejecuta:
-
-
-git init
-git branch -M main
-
-git add src resources data/.gitkeep
-git commit -m "feat: organiza Pac-Man y agrega ranking binario"
-
-git add .vscode run.bat run.sh .gitignore
-git commit -m "chore: agrega configuracion de ejecucion para VS Code"
-
-git add README.md
-git commit -m "docs: agrega instrucciones y mejoras futuras"
-
-
-Para conectar el proyecto con GitHub:
-
-
-git remote add origin https://github.com/O-Torress/Pman
-git push -u origin main
 
 
 

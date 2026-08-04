@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Pman",
+      "request": "launch",
+      "mainClass": "Pman",
+      "projectName": "Pman_e3b3f5da"
+    },
+    {
+      "type": "java",
+      "name": "Ejecutar Pman",
+      "request": "launch",
+      "mainClass": "Pman",
+      "projectName": "Pman",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
