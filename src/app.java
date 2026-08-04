@@ -11,7 +11,7 @@ public class app {
 
 
     JFrame frame = new JFrame("Pac Man");
-    // frame.setVisible(true);
+    
     frame.setSize(boardHeight, boardWidth);
     frame.setLocationRelativeTo(null);
     frame.setResizable(false);
@@ -20,6 +20,7 @@ public class app {
     Pman pmanGame = new Pman();
     frame.add(pmanGame);
     frame.pack();
+    pmanGame.requestFocus();
     frame.setVisible(true);
     
   }
